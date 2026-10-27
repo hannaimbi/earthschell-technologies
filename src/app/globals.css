@@ -62,6 +62,17 @@
   --radius-md: 10px;
   --radius-lg: 16px;
   --radius-xl: 24px;
+
+  /* Footer semantic tokens — Light mode */
+  --footer-bg: #EFF4F1;
+  --footer-text: var(--earth-text);
+  --footer-text-muted: #4B6365;
+  --footer-heading: var(--earth-sea-green);
+  --footer-border: var(--earth-accent);
+  --footer-link-hover: var(--earth-teal);
+  --footer-cta-bg: var(--earth-teal);
+  --footer-cta-text: var(--earth-white);
+  --footer-cta-hover: var(--earth-teal-hover);
 }
 
 /* Refined Contemporary Dark Theme - Layered Charcoal-Teal surfaces */
@@ -108,6 +119,17 @@
   --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.35);
   --shadow-md: 0 4px 14px -2px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 14px 28px -4px rgba(0, 0, 0, 0.5);
+
+  /* Footer semantic tokens — Dark mode */
+  --footer-bg: #0A1C20;
+  --footer-text: #F7F7F2;
+  --footer-text-muted: #D8E5DD;
+  --footer-heading: #88B09F;
+  --footer-border: #1F3E46;
+  --footer-link-hover: #FFFFFF;
+  --footer-cta-bg: #6F9584;
+  --footer-cta-text: #081D22;
+  --footer-cta-hover: #7FA796;
 }
 
 @theme {
@@ -144,11 +166,36 @@ body {
   overflow-x: hidden;
 }
 
+/* ─── Brand-Themed Text Selection ─── */
+::selection {
+  background: #D8E5DD;
+  color: #26383A;
+}
+
+::-moz-selection {
+  background: #D8E5DD;
+  color: #26383A;
+}
+
+.dark ::selection,
+[data-theme="dark"] ::selection {
+  background: #1E3A41;
+  color: #F7F7F2;
+}
+
+.dark ::-moz-selection,
+[data-theme="dark"] ::-moz-selection {
+  background: #1E3A41;
+  color: #F7F7F2;
+}
+
 /* Accessible focus styling */
 :focus-visible {
   outline: 2px solid var(--border-focus);
   outline-offset: 2px;
 }
+
+/* ─── Animation Keyframes ─── */
 
 /* Subtle schematic animations */
 @keyframes schematic-spin {
@@ -165,6 +212,78 @@ body {
   animation: schematic-spin 40s linear infinite;
 }
 
+/* Scroll-triggered section reveals */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out both;
+}
+
+/* Stagger delay utilities */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+
+/* Gentle floating for illustrations */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+  animation: float-gentle 5s ease-in-out infinite;
+}
+
+/* Orbit animation for 404 page */
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(80px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+}
+
+.animate-orbit {
+  animation: orbit 20s linear infinite;
+}
+
+@keyframes orbit-reverse {
+  from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+  to { transform: rotate(-360deg) translateX(60px) rotate(360deg); }
+}
+
+.animate-orbit-reverse {
+  animation: orbit-reverse 15s linear infinite;
+}
+
+/* Perspective tilt on hover */
+@keyframes perspective-float {
+  0%, 100% { transform: perspective(600px) rotateY(0deg) rotateX(0deg); }
+  25% { transform: perspective(600px) rotateY(2deg) rotateX(-1deg); }
+  75% { transform: perspective(600px) rotateY(-2deg) rotateX(1deg); }
+}
+
+.animate-perspective {
+  animation: perspective-float 8s ease-in-out infinite;
+}
+
+/* Pulse ring for 404 */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 0.3; }
+  100% { transform: scale(1); opacity: 0.5; }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 4s ease-in-out infinite;
+}
+
 /* Reduced motion preference respect */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -176,7 +295,16 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .animate-schematic-spin {
+  .animate-schematic-spin,
+  .animate-float,
+  .animate-orbit,
+  .animate-orbit-reverse,
+  .animate-perspective,
+  .animate-pulse-ring {
     animation: none !important;
+  }
+  .animate-fade-up {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

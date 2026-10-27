@@ -15,11 +15,16 @@ const quickLinks = [
 
 const serviceLinks = [
   { label: "Product Development", href: "/services/product-development" },
-  { label: "Custom Engineering Solutions", href: "/services/custom-engineering" },
+  { label: "Custom Engineering", href: "/services/custom-engineering" },
   {
-    label: "Engineering & Manufacturing Coordination",
+    label: "Engineering & Manufacturing",
     href: "/services/engineering-manufacturing",
   },
+];
+
+const legalLinks = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms & Conditions", href: "/terms-and-conditions" },
 ];
 
 function subscribe() {
@@ -36,13 +41,19 @@ export function Footer() {
   const currentYear = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   return (
-    <footer className="border-t border-[#093C46] dark:border-[#1F3E46] bg-[#0A1C20] text-white transition-colors">
+    <footer className="border-t transition-colors"
+      style={{
+        borderColor: "var(--footer-border)",
+        backgroundColor: "var(--footer-bg)",
+        color: "var(--footer-text)",
+      }}
+    >
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12 lg:gap-12">
           {/* Brand Column (Col 1-5) */}
           <div className="space-y-4 md:col-span-5">
             <EarthschellLogo variant="footer" priority={false} />
-            <p className="max-w-md text-sm leading-relaxed text-[#D8E5DD]/85">
+            <p className="max-w-md text-sm leading-relaxed" style={{ color: "var(--footer-text-muted)" }}>
               Earthschell operates as an engineering solutions partner, helping
               businesses and innovators navigate product development, custom technical
               requirements, and manufacturing resource coordination.
@@ -50,7 +61,11 @@ export function Footer() {
             <div className="pt-2">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#6F9584] hover:bg-[#7FA796] text-[#081D22] px-4 py-2 text-xs font-semibold shadow-xs transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold shadow-xs transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--border-focus)]"
+                style={{
+                  backgroundColor: "var(--footer-cta-bg)",
+                  color: "var(--footer-cta-text)",
+                }}
               >
                 <span>Initiate a Project Discussion</span>
                 <ArrowRight className="h-3.5 w-3.5" />
@@ -60,15 +75,21 @@ export function Footer() {
 
           {/* Navigation Links (Col 6-7) */}
           <div className="space-y-3 md:col-span-2">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-[#88B09F] font-heading">
+            <h3
+              className="text-xs font-semibold uppercase tracking-wider font-heading"
+              style={{ color: "var(--footer-heading)" }}
+            >
               Navigation
             </h3>
-            <ul className="space-y-2 text-sm text-[#D8E5DD]/85">
+            <ul className="space-y-2 text-sm" style={{ color: "var(--footer-text-muted)" }}>
               {quickLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="transition hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white rounded"
+                    className="transition-colors rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--border-focus)]"
+                    style={{ color: "inherit" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--footer-link-hover)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "inherit")}
                   >
                     {link.label}
                   </Link>
@@ -79,18 +100,24 @@ export function Footer() {
 
           {/* Service Links (Col 8-10) */}
           <div className="space-y-3 md:col-span-3">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-[#88B09F] font-heading">
+            <h3
+              className="text-xs font-semibold uppercase tracking-wider font-heading"
+              style={{ color: "var(--footer-heading)" }}
+            >
               Services
             </h3>
-            <ul className="space-y-2 text-sm text-[#D8E5DD]/85">
+            <ul className="space-y-2 text-sm" style={{ color: "var(--footer-text-muted)" }}>
               {serviceLinks.map((service) => (
                 <li key={service.label}>
                   <Link
                     href={service.href}
-                    className="group inline-flex items-center gap-1 transition hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white rounded"
+                    className="group inline-flex items-center gap-1 transition-colors rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--border-focus)]"
+                    style={{ color: "inherit" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--footer-link-hover)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "inherit")}
                   >
                     <span>{service.label}</span>
-                    <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#88B09F]" />
+                    <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" style={{ color: "var(--footer-heading)" }} />
                   </Link>
                 </li>
               ))}
@@ -99,15 +126,21 @@ export function Footer() {
 
           {/* Contact / Project Advisory Column (Col 11-12) */}
           <div className="space-y-3 md:col-span-2">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-[#88B09F] font-heading">
+            <h3
+              className="text-xs font-semibold uppercase tracking-wider font-heading"
+              style={{ color: "var(--footer-heading)" }}
+            >
               Enquiries
             </h3>
-            <p className="text-xs leading-relaxed text-[#D8E5DD]/75">
+            <p className="text-xs leading-relaxed" style={{ color: "var(--footer-text-muted)", opacity: 0.85 }}>
               Have a technical requirement or product concept to explore?
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#88B09F] hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold transition-colors"
+              style={{ color: "var(--footer-heading)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--footer-link-hover)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--footer-heading)")}
             >
               <span>Submit requirement</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -116,22 +149,25 @@ export function Footer() {
         </div>
 
         {/* Bottom Legal & Copyright Bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-[#D8E5DD]/70 sm:flex-row">
+        <div
+          className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-xs sm:flex-row"
+          style={{ borderColor: "var(--footer-border)", color: "var(--footer-text-muted)", opacity: 0.8 }}
+        >
           <p>© {currentYear} Earthschell. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link
-              href="/privacy-policy"
-              className="transition hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white rounded"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms-and-conditions"
-              className="transition hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white rounded"
-            >
-              Terms and Conditions
-            </Link>
-            <span className="hidden sm:inline-flex items-center gap-1 text-[#88B09F]">
+            {legalLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="transition-colors rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--border-focus)]"
+                style={{ color: "inherit" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--footer-link-hover)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "inherit")}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <span className="hidden sm:inline-flex items-center gap-1" style={{ color: "var(--footer-heading)" }}>
               <ShieldCheck className="h-3.5 w-3.5" />
               <span>Engineering Solutions Partner</span>
             </span>

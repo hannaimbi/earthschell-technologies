@@ -17,6 +17,10 @@ import {
   ArrowUpRight,
   ShieldCheck,
   Lock,
+  Eye,
+  Target,
+  MessageSquare,
+  Gem,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -28,35 +32,35 @@ export const metadata: Metadata = {
 const processSteps = [
   {
     step: "01",
-    name: "Discover",
-    icon: Search,
-    headline: "Understand constraints & goals",
+    name: "Understand",
+    icon: Eye,
+    headline: "Explore the challenge",
     detail:
-      "Every engagement starts with clear questions: what are the operational limits, target materials, compliance standards, and commercial objectives?",
+      "We begin by clarifying requirements, constraints, intended outcomes, and the broader context of your project.",
   },
   {
     step: "02",
-    name: "Plan",
-    icon: Sliders,
-    headline: "Map the technical pathway",
+    name: "Define",
+    icon: Target,
+    headline: "Agree on priorities & scope",
     detail:
-      "We outline practical project stages, evaluate design avenues, and define the specific engineering competencies required for execution.",
+      "Together, we map priorities, responsibilities, and the delivery plan — ensuring alignment before any work begins.",
   },
   {
     step: "03",
     name: "Develop",
     icon: Wrench,
-    headline: "Coordinate implementation",
+    headline: "Structured implementation",
     detail:
-      "We coordinate engineering activities, align technical stakeholders, and maintain regular communication as deliverables take shape.",
+      "We work through design and implementation collaboratively, maintaining regular communication and milestone reviews.",
   },
   {
     step: "04",
     name: "Refine",
     icon: RefreshCw,
-    headline: "Validate & iterate",
+    headline: "Review, test & improve",
     detail:
-      "Outputs, CAD models, and prototype stages are reviewed against technical benchmarks to prepare the solution for practical deployment.",
+      "Deliverables are reviewed against agreed benchmarks, iteratively improved, and prepared for handover or deployment.",
   },
 ];
 
@@ -93,54 +97,63 @@ const industries = [
 
 const principles = [
   {
-    title: "Requirement-Led Thinking",
+    icon: MessageSquare,
+    title: "Clear Communication",
     description:
-      "We start from your problem, standards, and constraints rather than forcing pre-packaged solutions.",
+      "Regular updates, honest feasibility feedback, and straightforward project tracking — no surprises.",
   },
   {
-    title: "Practical Roadmaps",
+    icon: Search,
+    title: "Considered Problem-Solving",
     description:
-      "Every engagement is scoped with realistic phases, transparent expectations, and clear deliverables.",
+      "We take time to understand the real challenge before proposing solutions, reducing rework and misalignment.",
   },
   {
-    title: "Collaborative Coordination",
+    icon: Sliders,
+    title: "Practical Decision-Making",
     description:
-      "We bridge the communication gap between your team, specialized engineers, and manufacturing resources.",
+      "Every recommendation balances technical requirements with real-world constraints like budget, timeline, and resources.",
   },
   {
-    title: "Direct Communication",
+    icon: Gem,
+    title: "Attention to Quality",
     description:
-      "Expect honest feasibility feedback, regular progress updates, and straightforward project tracking.",
+      "From initial requirement definition to final delivery, quality considerations are embedded in each decision.",
   },
 ];
 
 export default function Home() {
   return (
     <div className="flex flex-col">
-      {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden border-b border-[var(--border-main)] py-16 sm:py-24 lg:py-28">
+      {/* ═══════════════════════════════════════════════════════
+          1. HERO SECTION
+          ═══════════════════════════════════════════════════════ */}
+      <section className="relative overflow-hidden border-b border-[var(--border-main)] py-14 sm:py-20 lg:py-22">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-14">
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
             {/* Hero Copy */}
-            <div className="space-y-6 lg:col-span-7">
+            <div className="space-y-5 lg:col-span-7">
               {/* Eyebrow in body font (Inter) */}
               <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border-main)] bg-[var(--bg-surface-muted)] px-3.5 py-1 text-xs font-medium text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)] tracking-wider uppercase font-sans">
                 <span className="h-1.5 w-1.5 rounded-full bg-[var(--earth-copper)]" />
                 <span>Engineering • Product Development • Solutions</span>
               </div>
 
-              <h1 className="text-4xl font-extrabold tracking-tight text-[var(--text-main)] sm:text-5xl lg:text-6xl font-heading leading-tight">
-                Engineering Ideas Into Reality
+              <h1 className="text-3xl font-extrabold tracking-tight text-[var(--text-main)] sm:text-4xl lg:text-[3.25rem] font-heading leading-[1.15]">
+                From Complex Challenges to{" "}
+                <span className="text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)]">
+                  Thoughtful Engineering.
+                </span>
               </h1>
 
               <p className="max-w-2xl text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
-                We help businesses, technical leaders, and innovators turn requirements into viable
-                products and systems — coordinating the right engineering expertise, technical methods,
-                and manufacturing resources.
+                We help turn ideas and technical requirements into practical products
+                and engineering solutions — through clear planning, collaborative
+                execution, and continuous refinement.
               </p>
 
               {/* Clear CTA Hierarchy */}
-              <div className="flex flex-wrap items-center gap-3 pt-2 sm:gap-4">
+              <div className="flex flex-wrap items-center gap-3 pt-1 sm:gap-4">
                 <Link
                   href="/contact"
                   className="group inline-flex items-center gap-2 rounded-xl bg-[var(--btn-primary-bg)] px-6 py-3.5 text-sm font-semibold text-[var(--btn-primary-text)] shadow-xs transition-all hover:bg-[var(--btn-primary-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--border-focus)]"
@@ -283,232 +296,240 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. INTRODUCTION SECTION (EDITORIAL SPLIT LAYOUT) */}
-      <section className="py-16 sm:py-20 border-b border-[var(--border-main)] bg-[var(--bg-surface)]">
+      {/* ═══════════════════════════════════════════════════════
+          2. THREE FEATURED SERVICE CARDS — EQUAL GRID
+          ═══════════════════════════════════════════════════════ */}
+      <section id="services" className="py-14 sm:py-20 border-b border-[var(--border-main)]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-14">
-            {/* Left Column: Narrative Headline */}
-            <div className="lg:col-span-5 space-y-4">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[var(--earth-copper)] font-mono">
-                Approach
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-main)] font-heading leading-tight">
-                Engineering without assumptions.
-              </h2>
-              <p className="text-sm sm:text-base leading-relaxed text-[var(--text-muted)]">
-                Most technical hurdles don&apos;t fail from a lack of ideas — they stall because of
-                fragmented communication, unverified feasibility, or misaligned manufacturing resources.
-              </p>
-              <p className="text-sm sm:text-base leading-relaxed text-[var(--text-muted)]">
-                At Earthschell, our role is to bring clarity to that process: understanding constraints
-                early, evaluating technical pathways, and coordinating the right specialists to deliver
-                concrete progress.
-              </p>
-            </div>
-
-            {/* Right Column: Three Structural Pillars */}
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="rounded-xl border border-[var(--border-main)] bg-[var(--bg-app)] p-5 space-y-2">
-                <span className="font-mono text-xs font-bold text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)]">
-                  01 // ANALYSIS
-                </span>
-                <h3 className="text-sm font-bold text-[var(--text-main)] font-heading">
-                  Requirement Mapping
-                </h3>
-                <p className="text-xs leading-relaxed text-[var(--text-muted)]">
-                  Clear definition of technical parameters, constraints, and operational goals.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-[var(--border-main)] bg-[var(--bg-app)] p-5 space-y-2">
-                <span className="font-mono text-xs font-bold text-[var(--earth-copper)]">
-                  02 // CAPABILITIES
-                </span>
-                <h3 className="text-sm font-bold text-[var(--text-main)] font-heading">
-                  Resource Alignment
-                </h3>
-                <p className="text-xs leading-relaxed text-[var(--text-muted)]">
-                  Connecting requirements with specialized design, engineering, or machining methods.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-[var(--border-main)] bg-[var(--bg-app)] p-5 space-y-2">
-                <span className="font-mono text-xs font-bold text-[var(--earth-sea-green)]">
-                  03 // EXECUTION
-                </span>
-                <h3 className="text-sm font-bold text-[var(--text-main)] font-heading">
-                  Transparent Delivery
-                </h3>
-                <p className="text-xs leading-relaxed text-[var(--text-muted)]">
-                  Active project coordination, milestone reviews, and dependable communication.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. ASYMMETRIC SERVICES SECTION WITH WARM COPPER HIGHLIGHT */}
-      <section id="services" className="py-16 sm:py-24 border-b border-[var(--border-main)]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 max-w-3xl">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)] font-mono">
-                Services
-              </span>
-              <h2 className="mt-1 text-3xl font-extrabold text-[var(--text-main)] sm:text-4xl font-heading">
-                Structured Engineering Capabilities
-              </h2>
-            </div>
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)] hover:underline"
-            >
-              <span>View full service overview</span>
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)] font-mono">
+              Core Services
+            </span>
+            <h2 className="mt-1 text-2xl font-extrabold text-[var(--text-main)] sm:text-3xl lg:text-4xl font-heading">
+              Engineering Solutions,{" "}
+              <span className="text-[var(--earth-sea-green)]">Built Around Your Needs</span>
+            </h2>
           </div>
 
-          {/* Asymmetric 2-Row Layout */}
-          <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-6">
-            {/* Card 1: Featured Product Development (7 Columns) */}
-            <div className="lg:col-span-7 flex flex-col justify-between rounded-2xl border border-[var(--border-main)] bg-[var(--bg-surface)] p-7 sm:p-9 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--earth-sea-green)]">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--bg-surface-muted)] text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)]">
-                    <Compass className="h-5 w-5" />
+          {/* Equal 3-Column CSS Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* ── Card 1: Product Development ── */}
+            <div className="flex flex-col rounded-2xl border border-[var(--border-main)] bg-[var(--bg-surface)] shadow-xs transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-[var(--earth-sea-green)] overflow-hidden">
+              {/* Visual: Product Layers */}
+              <div className="relative h-44 flex items-center justify-center bg-[var(--earth-copper-subtle)] overflow-hidden">
+                <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-40 h-auto animate-float" aria-hidden="true">
+                  {/* Layered product form */}
+                  <rect x="50" y="90" width="100" height="24" rx="4" stroke="#C37D5C" strokeWidth="1.5" fill="none" opacity="0.5" />
+                  <rect x="40" y="62" width="120" height="24" rx="4" stroke="#C37D5C" strokeWidth="1.5" fill="#C37D5C" fillOpacity="0.08" />
+                  <rect x="30" y="34" width="140" height="24" rx="4" stroke="#C37D5C" strokeWidth="2" fill="#C37D5C" fillOpacity="0.15" />
+                  {/* Top layer — dominant */}
+                  <rect x="45" y="10" width="110" height="20" rx="6" fill="#C37D5C" fillOpacity="0.22" stroke="#C37D5C" strokeWidth="2" />
+                  {/* Iteration arrows */}
+                  <path d="M160 72 L175 50 M175 50 L170 56 M175 50 L168 52" stroke="#C37D5C" strokeWidth="1.2" opacity="0.6" />
+                  <path d="M40 72 L25 50 M25 50 L30 56 M25 50 L32 52" stroke="#C37D5C" strokeWidth="1.2" opacity="0.6" />
+                  {/* Grid dots */}
+                  <circle cx="100" cy="130" r="1.5" fill="#C37D5C" opacity="0.3" />
+                  <circle cx="115" cy="130" r="1.5" fill="#C37D5C" opacity="0.3" />
+                  <circle cx="85" cy="130" r="1.5" fill="#C37D5C" opacity="0.3" />
+                </svg>
+              </div>
+              <div className="flex flex-col flex-1 p-6 sm:p-7">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--earth-copper-subtle)] text-[var(--earth-copper)]">
+                    <Compass className="h-4.5 w-4.5" />
                   </div>
-                  <span className="inline-flex items-center gap-1 rounded-full border border-[var(--earth-copper-border)] bg-[var(--earth-copper-subtle)] px-2.5 py-0.5 text-[10px] font-bold text-[var(--earth-copper)] font-mono uppercase">
-                    Core Capability
-                  </span>
+                  <span className="text-[10px] font-mono font-bold uppercase text-[var(--earth-copper)]">Service 01</span>
                 </div>
-
-                <h3 className="text-2xl font-bold text-[var(--text-main)] font-heading">
+                <h3 className="text-lg font-bold text-[var(--text-main)] font-heading mb-2">
                   Product Development
                 </h3>
-
-                <p className="text-sm leading-relaxed text-[var(--text-muted)]">
-                  Explore structured pathways for developing new products or refining existing
-                  concepts. We assist from initial requirement definition through mechanical design,
-                  CAD modeling, and prototyping validation.
+                <p className="text-sm leading-relaxed text-[var(--text-muted)] flex-1">
+                  Shape an idea into a considered, usable product through discovery,
+                  requirements definition, design, prototyping, development, and
+                  iterative refinement.
                 </p>
-
-                <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[var(--text-muted)]">
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="h-3.5 w-3.5 text-[var(--earth-sea-green)]" />
-                    <span>Concept Feasibility &amp; Scoping</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="h-3.5 w-3.5 text-[var(--earth-sea-green)]" />
-                    <span>3D CAD &amp; Engineering Modeling</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="h-3.5 w-3.5 text-[var(--earth-sea-green)]" />
-                    <span>Design for Manufacturability</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="h-3.5 w-3.5 text-[var(--earth-sea-green)]" />
-                    <span>Prototype Coordination Support</span>
-                  </div>
+                <div className="mt-5 pt-4 border-t border-[var(--border-main)]">
+                  <Link
+                    href="/services/product-development"
+                    className="group inline-flex items-center gap-1.5 text-xs font-bold text-[var(--earth-copper)] hover:text-[var(--earth-copper-hover)]"
+                  >
+                    <span>Explore Product Development</span>
+                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </Link>
                 </div>
-              </div>
-
-              <div className="mt-8 pt-4 border-t border-[var(--border-main)] flex items-center justify-between">
-                <Link
-                  href="/services/product-development"
-                  className="group inline-flex items-center gap-1.5 text-xs font-bold text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)]"
-                >
-                  <span>Explore Product Development</span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Link>
-                <span className="text-[11px] font-mono text-[var(--text-subtle)]">STAGE 1 — 4</span>
               </div>
             </div>
 
-            {/* Card 2: Custom Engineering Solutions (5 Columns) */}
-            <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl border border-[var(--border-main)] bg-[var(--bg-surface)] p-7 sm:p-8 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--earth-sea-green)]">
-              <div className="space-y-4">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--bg-surface-muted)] text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)]">
-                  <Cpu className="h-5 w-5" />
+            {/* ── Card 2: Custom Engineering ── */}
+            <div className="flex flex-col rounded-2xl border border-[var(--border-main)] bg-[var(--bg-surface)] shadow-xs transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-[var(--earth-sea-green)] overflow-hidden">
+              {/* Visual: Connected modules */}
+              <div className="relative h-44 flex items-center justify-center bg-[var(--bg-surface-muted)] overflow-hidden">
+                <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-40 h-auto animate-float delay-100" aria-hidden="true">
+                  {/* Central hub */}
+                  <circle cx="100" cy="70" r="20" stroke="#0D5260" strokeWidth="2" fill="#0D5260" fillOpacity="0.08" className="dark:stroke-[#6F9584] dark:fill-[#6F9584]" />
+                  <circle cx="100" cy="70" r="8" fill="#0D5260" fillOpacity="0.2" className="dark:fill-[#6F9584]" />
+                  {/* Satellite modules */}
+                  <rect x="20" y="18" width="30" height="22" rx="4" stroke="#0D5260" strokeWidth="1.5" fill="none" className="dark:stroke-[#6F9584]" />
+                  <rect x="150" y="18" width="30" height="22" rx="4" stroke="#0D5260" strokeWidth="1.5" fill="none" className="dark:stroke-[#6F9584]" />
+                  <rect x="20" y="100" width="30" height="22" rx="4" stroke="#0D5260" strokeWidth="1.5" fill="none" className="dark:stroke-[#6F9584]" />
+                  <rect x="150" y="100" width="30" height="22" rx="4" stroke="#0D5260" strokeWidth="1.5" fill="none" className="dark:stroke-[#6F9584]" />
+                  {/* Connection lines */}
+                  <line x1="50" y1="29" x2="82" y2="58" stroke="#0D5260" strokeWidth="1" strokeDasharray="3 3" opacity="0.5" className="dark:stroke-[#6F9584]" />
+                  <line x1="150" y1="29" x2="118" y2="58" stroke="#0D5260" strokeWidth="1" strokeDasharray="3 3" opacity="0.5" className="dark:stroke-[#6F9584]" />
+                  <line x1="50" y1="111" x2="82" y2="82" stroke="#0D5260" strokeWidth="1" strokeDasharray="3 3" opacity="0.5" className="dark:stroke-[#6F9584]" />
+                  <line x1="150" y1="111" x2="118" y2="82" stroke="#0D5260" strokeWidth="1" strokeDasharray="3 3" opacity="0.5" className="dark:stroke-[#6F9584]" />
+                  {/* Data flow dots */}
+                  <circle cx="66" cy="44" r="2" fill="#0D5260" fillOpacity="0.4" className="dark:fill-[#6F9584]" />
+                  <circle cx="134" cy="44" r="2" fill="#0D5260" fillOpacity="0.4" className="dark:fill-[#6F9584]" />
+                </svg>
+              </div>
+              <div className="flex flex-col flex-1 p-6 sm:p-7">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--bg-surface-muted)] text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)]">
+                    <Cpu className="h-4.5 w-4.5" />
+                  </div>
+                  <span className="text-[10px] font-mono font-bold uppercase text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)]">Service 02</span>
                 </div>
-
-                <h3 className="text-xl font-bold text-[var(--text-main)] font-heading">
-                  Custom Engineering Solutions
+                <h3 className="text-lg font-bold text-[var(--text-main)] font-heading mb-2">
+                  Custom Engineering
                 </h3>
-
-                <p className="text-sm leading-relaxed text-[var(--text-muted)]">
-                  Targeted technical problem-solving suited to project-specific requirements,
-                  mechanical assemblies, structural challenges, and customized engineering criteria.
+                <p className="text-sm leading-relaxed text-[var(--text-muted)] flex-1">
+                  Address specific technical challenges with tailored solutions,
+                  thoughtful system design, integration, and practical implementation
+                  aligned with your requirements.
                 </p>
-
-                <div className="space-y-1.5 pt-2 text-xs text-[var(--text-muted)]">
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="h-3.5 w-3.5 text-[var(--earth-sea-green)]" />
-                    <span>Technical requirement decomposition</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="h-3.5 w-3.5 text-[var(--earth-sea-green)]" />
-                    <span>Specialist engineering coordination</span>
-                  </div>
+                <div className="mt-5 pt-4 border-t border-[var(--border-main)]">
+                  <Link
+                    href="/services/custom-engineering"
+                    className="group inline-flex items-center gap-1.5 text-xs font-bold text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)]"
+                  >
+                    <span>Explore Custom Engineering</span>
+                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </Link>
                 </div>
-              </div>
-
-              <div className="mt-8 pt-4 border-t border-[var(--border-main)]">
-                <Link
-                  href="/services/custom-engineering"
-                  className="group inline-flex items-center gap-1.5 text-xs font-bold text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)]"
-                >
-                  <span>Explore Custom Engineering</span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Link>
               </div>
             </div>
 
-            {/* Card 3: Engineering & Manufacturing Coordination (Full 12 Columns) */}
-            <div className="lg:col-span-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 rounded-2xl border border-[var(--border-main)] bg-[var(--bg-surface)] p-7 sm:p-8 shadow-xs transition-all duration-200 hover:border-[var(--earth-sea-green)]">
-              <div className="flex items-start sm:items-center gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--bg-surface-muted)] text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)]">
-                  <Layers className="h-6 w-6" />
+            {/* ── Card 3: Engineering & Manufacturing ── */}
+            <div className="flex flex-col rounded-2xl border border-[var(--border-main)] bg-[var(--bg-surface)] shadow-xs transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-[var(--earth-sea-green)] overflow-hidden md:col-span-2 lg:col-span-1">
+              {/* Visual: CAD-inspired linework */}
+              <div className="relative h-44 flex items-center justify-center bg-[var(--accent-sand-subtle)] overflow-hidden">
+                <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-40 h-auto animate-float delay-200" aria-hidden="true">
+                  {/* Exploded component view */}
+                  <rect x="60" y="10" width="80" height="30" rx="3" stroke="#6F9584" strokeWidth="1.5" fill="none" />
+                  <line x1="70" y1="25" x2="130" y2="25" stroke="#6F9584" strokeWidth="0.8" opacity="0.4" />
+                  <line x1="100" y1="10" x2="100" y2="40" stroke="#6F9584" strokeWidth="0.8" opacity="0.4" />
+                  {/* Spacing indicator */}
+                  <line x1="100" y1="40" x2="100" y2="52" stroke="#6F9584" strokeWidth="1" strokeDasharray="2 2" opacity="0.5" />
+                  {/* Middle component */}
+                  <rect x="50" y="52" width="100" height="30" rx="3" stroke="#6F9584" strokeWidth="2" fill="#6F9584" fillOpacity="0.1" />
+                  <circle cx="75" cy="67" r="5" stroke="#6F9584" strokeWidth="1" fill="none" />
+                  <circle cx="125" cy="67" r="5" stroke="#6F9584" strokeWidth="1" fill="none" />
+                  {/* Spacing indicator */}
+                  <line x1="100" y1="82" x2="100" y2="94" stroke="#6F9584" strokeWidth="1" strokeDasharray="2 2" opacity="0.5" />
+                  {/* Bottom component */}
+                  <rect x="40" y="94" width="120" height="30" rx="3" stroke="#6F9584" strokeWidth="1.5" fill="#6F9584" fillOpacity="0.05" />
+                  {/* Dimension annotations */}
+                  <line x1="170" y1="52" x2="170" y2="82" stroke="#C37D5C" strokeWidth="0.8" />
+                  <line x1="166" y1="52" x2="174" y2="52" stroke="#C37D5C" strokeWidth="0.8" />
+                  <line x1="166" y1="82" x2="174" y2="82" stroke="#C37D5C" strokeWidth="0.8" />
+                  <text x="174" y="70" fill="#C37D5C" fontSize="7" fontFamily="monospace">30mm</text>
+                </svg>
+              </div>
+              <div className="flex flex-col flex-1 p-6 sm:p-7">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--accent-sand)] text-[var(--earth-sea-green)]">
+                    <Layers className="h-4.5 w-4.5" />
+                  </div>
+                  <span className="text-[10px] font-mono font-bold uppercase text-[var(--earth-sea-green)]">Service 03</span>
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-[var(--text-main)] font-heading">
-                    Engineering &amp; Manufacturing Coordination
-                  </h3>
-                  <p className="mt-1 text-sm text-[var(--text-muted)] max-w-2xl leading-relaxed">
-                    Connecting project requirements with suitable external engineering companies,
-                    machinery providers, and manufacturing partners based on your specific scope.
-                  </p>
+                <h3 className="text-lg font-bold text-[var(--text-main)] font-heading mb-2">
+                  Engineering & Manufacturing
+                </h3>
+                <p className="text-sm leading-relaxed text-[var(--text-muted)] flex-1">
+                  Connect engineering requirements with practical production
+                  considerations through design coordination, feasibility thinking,
+                  and manufacturing-oriented support.
+                </p>
+                <div className="mt-5 pt-4 border-t border-[var(--border-main)]">
+                  <Link
+                    href="/services/engineering-manufacturing"
+                    className="group inline-flex items-center gap-1.5 text-xs font-bold text-[var(--earth-sea-green)]"
+                  >
+                    <span>Explore Engineering & Manufacturing</span>
+                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </Link>
                 </div>
               </div>
-
-              <Link
-                href="/services/engineering-manufacturing"
-                className="group shrink-0 inline-flex items-center gap-1.5 rounded-xl border border-[var(--border-main)] bg-[var(--bg-app)] px-4 py-2.5 text-xs font-bold text-[var(--text-main)] transition hover:border-[var(--earth-sea-green)]"
-              >
-                <span>Learn More</span>
-                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. CONNECTED PROCESS TIMELINE */}
-      <section className="py-16 sm:py-24 border-b border-[var(--border-main)] bg-[var(--bg-surface)]">
+      {/* ═══════════════════════════════════════════════════════
+          3. WHY EARTHSCHELL — VALUE PROPOSITION
+          ═══════════════════════════════════════════════════════ */}
+      <section className="py-14 sm:py-20 border-b border-[var(--border-main)] bg-[var(--bg-surface)]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto">
+          <div className="max-w-2xl mb-10">
             <span className="text-xs font-semibold uppercase tracking-wider text-[var(--earth-copper)] font-mono">
-              Working Process
+              Our Approach
             </span>
-            <h2 className="mt-1 text-3xl font-extrabold text-[var(--text-main)] sm:text-4xl font-heading">
-              A Clear Path from Requirement to Solution
+            <h2 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[var(--text-main)] font-heading leading-tight">
+              What Makes Earthschell&apos;s Approach{" "}
+              <span className="text-[var(--earth-copper)]">Useful</span>
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-[var(--text-muted)]">
-              A disciplined four-step engagement structure that keeps communication clear and progress transparent.
+            <p className="mt-2 text-sm sm:text-base leading-relaxed text-[var(--text-muted)]">
+              We focus on understanding your actual requirements before recommending
+              solutions — combining clear communication with practical engineering
+              problem-solving.
             </p>
           </div>
 
-          <div className="relative mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {principles.map((principle) => {
+              const Icon = principle.icon;
+              return (
+                <div
+                  key={principle.title}
+                  className="rounded-2xl border border-[var(--border-main)] bg-[var(--bg-app)] p-6 shadow-2xs space-y-3 transition-all duration-200 hover:border-[var(--earth-sea-green)]"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--bg-surface-muted)] text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)]">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-base font-bold text-[var(--text-main)] font-heading">
+                    {principle.title}
+                  </h3>
+                  <p className="text-xs leading-relaxed text-[var(--text-muted)]">
+                    {principle.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          4. CONNECTED PROCESS TIMELINE — "How We Work"
+          ═══════════════════════════════════════════════════════ */}
+      <section className="py-14 sm:py-20 border-b border-[var(--border-main)]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)] font-mono">
+              How We Work
+            </span>
+            <h2 className="mt-1 text-2xl font-extrabold text-[var(--text-main)] sm:text-3xl lg:text-4xl font-heading">
+              A Clear Path from{" "}
+              <span className="text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)]">Concept to Execution</span>
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-[var(--text-muted)]">
+              A structured four-step approach that keeps communication clear and
+              progress transparent throughout every engagement.
+            </p>
+          </div>
+
+          <div className="relative mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             <div className="hidden lg:block absolute top-7 left-12 right-12 h-px bg-[var(--border-main)] -z-0" />
 
             {processSteps.map((step) => {
@@ -516,11 +537,11 @@ export default function Home() {
               return (
                 <div
                   key={step.step}
-                  className="relative z-10 flex flex-col justify-between rounded-2xl border border-[var(--border-main)] bg-[var(--bg-app)] p-6 shadow-2xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--earth-sea-green)]"
+                  className="relative z-10 flex flex-col justify-between rounded-2xl border border-[var(--border-main)] bg-[var(--bg-surface)] p-6 shadow-2xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--earth-sea-green)]"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="inline-flex items-center justify-center h-8 w-8 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-main)] text-xs font-bold font-mono text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)] shadow-2xs">
+                      <span className="inline-flex items-center justify-center h-8 w-8 rounded-lg bg-[var(--bg-surface-muted)] border border-[var(--border-main)] text-xs font-bold font-mono text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)] shadow-2xs">
                         {step.step}
                       </span>
                       <Icon className="h-4 w-4 text-[var(--text-subtle)]" />
@@ -545,18 +566,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. POTENTIAL INDUSTRIES (SOFT-SAGE TEXTURED SECTION) */}
-      <section id="industries" className="py-16 sm:py-24 border-b border-[var(--border-main)] bg-[var(--bg-surface-muted)]/50">
+      {/* ═══════════════════════════════════════════════════════
+          5. POTENTIAL INDUSTRIES
+          ═══════════════════════════════════════════════════════ */}
+      <section id="industries" className="py-14 sm:py-20 border-b border-[var(--border-main)] bg-[var(--bg-surface-muted)]/50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
             <span className="text-xs font-semibold uppercase tracking-wider text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)] font-mono">
-              Potential Focus Areas
+              Relevant Industries
             </span>
-            <h2 className="mt-1 text-3xl font-extrabold text-[var(--text-main)] sm:text-4xl font-heading">
+            <h2 className="mt-1 text-2xl font-extrabold text-[var(--text-main)] sm:text-3xl font-heading">
               Sectors We Are Prepared to Support
             </h2>
             <p className="mt-2 text-sm text-[var(--text-muted)]">
-              Engineering sectors where client requirements frequently align with specialized design, analysis, and production capabilities.
+              Engineering sectors where client requirements frequently align with
+              our design, analysis, and coordination capabilities.
             </p>
           </div>
 
@@ -592,44 +616,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. WHY EARTHSCHELL (WORKING PRINCIPLES) */}
-      <section className="py-16 sm:py-24 border-b border-[var(--border-main)] bg-[var(--bg-surface)]">
+      {/* ═══════════════════════════════════════════════════════
+          6. ENGAGEMENT OVERVIEW — IP & GOVERNANCE
+          ═══════════════════════════════════════════════════════ */}
+      <section className="py-14 sm:py-18 border-b border-[var(--border-main)] bg-[var(--bg-surface)]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[var(--earth-copper)] font-mono">
-              Working Principles
-            </span>
-            <h2 className="mt-1 text-3xl font-extrabold text-[var(--text-main)] sm:text-4xl font-heading">
-              Grounded in Technical Accountability
-            </h2>
-            <p className="mt-2 text-sm text-[var(--text-muted)]">
-              We focus on practical standards rather than inflated claims. Here is what you can expect when collaborating with Earthschell.
-            </p>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {principles.map((principle) => (
-              <div
-                key={principle.title}
-                className="rounded-2xl border border-[var(--border-main)] bg-[var(--bg-app)] p-6 shadow-2xs space-y-2"
-              >
-                <div className="h-1.5 w-6 rounded-full bg-[var(--earth-sea-green)] mb-3" />
-                <h3 className="text-base font-bold text-[var(--text-main)] font-heading">
-                  {principle.title}
-                </h3>
-                <p className="text-xs leading-relaxed text-[var(--text-muted)]">
-                  {principle.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. IP PROTECTION & GOVERNANCE ASSURANCE (REPLACING UNAPPROVED PROJECTS SECTION) */}
-      <section className="py-16 sm:py-20 border-b border-[var(--border-main)] bg-[var(--bg-app)]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl rounded-2xl border border-[var(--border-main)] bg-[var(--bg-surface)] p-8 sm:p-12 shadow-xs">
+          <div className="mx-auto max-w-4xl rounded-2xl border border-[var(--border-main)] bg-[var(--bg-app)] p-8 sm:p-12 shadow-xs">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
               <div className="flex items-start gap-4">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--bg-surface-muted)] text-[var(--earth-teal)] dark:text-[var(--earth-sea-green)]">
@@ -663,14 +655,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. FINAL CTA */}
-      <section className="py-16 sm:py-24 bg-[var(--bg-surface)]">
+      {/* ═══════════════════════════════════════════════════════
+          7. FINAL CTA
+          ═══════════════════════════════════════════════════════ */}
+      <section className="py-14 sm:py-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
-          <div className="rounded-3xl border border-[var(--border-main)] bg-[var(--bg-app)] p-8 sm:p-14 shadow-xs">
+          <div className="rounded-3xl border border-[var(--border-main)] bg-[var(--bg-surface)] p-8 sm:p-14 shadow-xs">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--earth-copper-border)] bg-[var(--earth-copper-subtle)] px-3 py-1 text-[10px] font-bold text-[var(--earth-copper)] font-mono uppercase">
               Next Steps
             </span>
-            <h2 className="mt-3 text-3xl font-extrabold text-[var(--text-main)] sm:text-4xl font-heading">
+            <h2 className="mt-3 text-2xl font-extrabold text-[var(--text-main)] sm:text-3xl lg:text-4xl font-heading">
               Have an Idea in Mind?
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[var(--text-muted)]">

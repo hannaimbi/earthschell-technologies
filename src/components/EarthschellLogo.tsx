@@ -17,14 +17,23 @@ export function EarthschellLogo({
   forceDark = false,
 }: EarthschellLogoProps) {
   // Proportions: Original logo is 1536 x 1024 (exact 3:2 ratio).
+  // Increased desktop sizes for better visibility
   const heightClasses = {
     compact: "h-7 sm:h-8",
-    header: "h-8 sm:h-9",
+    header: "h-10 sm:h-11 lg:h-12",
     footer: "h-9 sm:h-10",
     hero: "h-14 sm:h-16",
   }[variant];
 
   const isFooter = variant === "footer" || forceDark;
+
+  // Text sizing per variant
+  const textSizeClasses = {
+    compact: "text-sm sm:text-base",
+    header: "text-base sm:text-lg lg:text-xl",
+    footer: "text-base sm:text-lg",
+    hero: "text-2xl sm:text-3xl",
+  }[variant];
 
   return (
     <Link
@@ -74,13 +83,27 @@ export function EarthschellLogo({
 
       {showText && (
         <span
-          className={`font-heading font-bold text-lg sm:text-xl tracking-tight transition-colors ${
-            isFooter
-              ? "text-white"
-              : "text-[var(--earth-teal)] dark:text-[var(--text-main)]"
-          }`}
+          className={`${textSizeClasses} tracking-[0.25em] uppercase font-light transition-colors`}
+          style={{ fontFamily: "var(--font-heading)" }}
         >
-          Earthschell
+          <span
+            className={
+              isFooter
+                ? "text-white"
+                : "text-[var(--earth-teal)] dark:text-[#E0EFEA]"
+            }
+          >
+            Earth
+          </span>
+          <span
+            className={
+              isFooter
+                ? "text-[#88C8D8]"
+                : "text-[#3DA5B5] dark:text-[#6FC8D8]"
+            }
+          >
+            schell
+          </span>
         </span>
       )}
     </Link>
