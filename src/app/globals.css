@@ -1,26 +1,182 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *, .dark, .dark *));
+
+/* Approved Earthschell Brand Tokens */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primitive Brand Palette */
+  --earth-teal: #0D5260;
+  --earth-teal-hover: #093C46;
+  --earth-sea-green: #6F9584;
+  --earth-sea-green-hover: #5E8373;
+  --earth-bg: #F7F7F2;
+  --earth-text: #26383A;
+  --earth-accent: #D8E5DD;
+  --earth-white: #FFFFFF;
+
+  /* Restrained Secondary Accents */
+  --earth-copper: #C37D5C;
+  --earth-copper-hover: #AF6C4C;
+  --earth-copper-subtle: #F9F4F0;
+  --earth-copper-border: #E8D7CD;
+
+  --accent-yellow: #D4A346;
+  --accent-yellow-subtle: #FCF9F0;
+  --accent-yellow-border: #F3E5C5;
+
+  --accent-terracotta: #C35D52;
+  --accent-terracotta-subtle: #FDF5F4;
+  --accent-terracotta-border: #F4D6D3;
+
+  --accent-sand: #F4EFE6;
+  --accent-sand-subtle: #FAF7F2;
+  --accent-sand-border: #E6DCce;
+
+  /* Semantic Light Theme */
+  --bg-app: var(--earth-bg);
+  --bg-surface: var(--earth-white);
+  --bg-surface-muted: #EFF4F1;
+  --bg-surface-elevated: #FFFFFF;
+  --text-main: var(--earth-text);
+  --text-muted: #4B6365;
+  --text-subtle: #6D8885;
+  
+  --border-main: var(--earth-accent);
+  --border-subtle: #CBDCD1;
+  --border-focus: var(--earth-teal);
+
+  --btn-primary-bg: var(--earth-teal);
+  --btn-primary-text: var(--earth-white);
+  --btn-primary-hover: var(--earth-teal-hover);
+
+  --btn-secondary-bg: var(--earth-white);
+  --btn-secondary-text: var(--earth-text);
+  --btn-secondary-hover: var(--earth-bg);
+
+  --shadow-xs: 0 1px 2px 0 rgba(13, 82, 96, 0.04);
+  --shadow-sm: 0 1px 3px 0 rgba(13, 82, 96, 0.06), 0 1px 2px -1px rgba(13, 82, 96, 0.04);
+  --shadow-md: 0 4px 12px -2px rgba(13, 82, 96, 0.08), 0 2px 6px -1px rgba(13, 82, 96, 0.04);
+  --shadow-lg: 0 12px 24px -4px rgba(13, 82, 96, 0.12);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Refined Contemporary Dark Theme - Layered Charcoal-Teal surfaces */
+.dark, [data-theme="dark"] {
+  --bg-app: #102226;
+  --bg-surface: #172F35;
+  --bg-surface-muted: #1E3A41;
+  --bg-surface-elevated: #24464F;
+  --text-main: var(--earth-bg);
+  --text-muted: #D8E5DD;
+  --text-subtle: #96B8AD;
+
+  --border-main: #274C54;
+  --border-subtle: #315C66;
+  --border-focus: var(--earth-sea-green);
+
+  --btn-primary-bg: var(--earth-sea-green);
+  --btn-primary-text: #0E2024;
+  --btn-primary-hover: #7FA796;
+
+  --btn-secondary-bg: #1B363C;
+  --btn-secondary-text: var(--earth-bg);
+  --btn-secondary-hover: #23434A;
+
+  /* Dark mode accents */
+  --earth-copper: #D48D6C;
+  --earth-copper-hover: #E09C7B;
+  --earth-copper-subtle: #241D1A;
+  --earth-copper-border: #4A3830;
+
+  --accent-yellow: #E5B860;
+  --accent-yellow-subtle: #262117;
+  --accent-yellow-border: #4D3F22;
+
+  --accent-terracotta: #D87166;
+  --accent-terracotta-subtle: #2B1B1A;
+  --accent-terracotta-border: #522E2B;
+
+  --accent-sand: #162B2F;
+  --accent-sand-subtle: #122427;
+  --accent-sand-border: #284A51;
+
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 14px -2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 14px 28px -4px rgba(0, 0, 0, 0.5);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: var(--font-space-grotesk), var(--font-inter), system-ui, sans-serif;
+
+  --color-earth-teal: #0D5260;
+  --color-earth-teal-hover: #093C46;
+  --color-earth-sea-green: #6F9584;
+  --color-earth-sea-green-hover: #5E8373;
+  --color-earth-bg: #F7F7F2;
+  --color-earth-text: #26383A;
+  --color-earth-accent: #D8E5DD;
+  --color-earth-white: #FFFFFF;
+  --color-earth-copper: #C37D5C;
+
+  --color-earth-dark-bg: #102226;
+  --color-earth-dark-surface: #172F35;
+  --color-earth-dark-muted: #1E3A41;
+  --color-earth-dark-border: #274C54;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for sticky header */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Accessible focus styling */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* Subtle schematic animations */
+@keyframes schematic-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-schematic-spin {
+  transform-origin: 160px 110px;
+  animation: schematic-spin 40s linear infinite;
+}
+
+/* Reduced motion preference respect */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-schematic-spin {
+    animation: none !important;
+  }
 }
